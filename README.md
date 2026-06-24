@@ -1,127 +1,78 @@
-# ClosetAI - Your AI Fashion Assistant
+# ClosetAI — Real-Time AI Fashion Consultant
 
-![ClosetAI Interface](screenshot.png)
+ClosetAI is a browser-based AI fashion assistant that watches your outfit through your webcam, listens to you speak, and responds with voice + live chat. There is no typing — the entire interaction is conversational.
 
-ClosetAI is an innovative AI-powered fashion assistant that provides personalized style advice through interactive video chat. Using advanced computer vision and natural language processing, ClosetAI can see and analyze your outfits in real-time to offer tailored fashion recommendations.
+## How It Works
 
-## ✨ Features
+1. Click the camera button to start your session
+2. The AI sees your outfit through the camera and hears you through the mic
+3. Speak naturally — ask about occasions, get style advice, show different outfits
+4. The AI responds with voice and the conversation appears in the chat panel in real time
 
-- **Real-time Video Chat**: Interactive video communication with your AI fashion assistant
-- **Live Style Analysis**: AI can see and analyze your current outfit in real-time
-- **Personalized Recommendations**: Get customized fashion advice based on your style preferences
-- **Occasion-based Styling**: Receive outfit suggestions for specific events or occasions
-- **Interactive Chat Interface**: Seamless conversation flow with your AI stylist
-- **Voice & Video Support**: Multi-modal interaction for a natural experience
+## Tech Stack
 
-## 🚀 Getting Started
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 15.5 (App Router) + React 19 |
+| Language | TypeScript 5 |
+| Styling | Tailwind CSS 3.4 + shadcn/ui |
+| Live AI | Google Gemini Live API (`gemini-3.1-flash-live-preview`) |
+| SDK | `@google/genai` |
+| User Speech | Web Speech API (browser-native, no quota) |
+| AI Text | `outputAudioTranscription` on Live API session |
+| Audio | Web Audio API + AudioWorklet (`public/worklets/audio-processor.js`) |
+| Video | `getUserMedia` → JPEG frames → base64 |
+
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm or yarn
-- Webcam and microphone for video chat functionality
+- Node.js 18+
+- A Google Gemini API key ([get one free at Google AI Studio](https://aistudio.google.com/apikey))
+- Chrome or Edge (Web Speech API required for user transcription)
 
 ### Installation
 
-1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/gemini-videochat.git
-cd gemini-nextjs
-```
+# 1. Clone the repo
+git clone https://github.com/Sarvesh28D/ClosetAI.git
+cd ClosetAI
 
-2. Install dependencies
-```bash
+# 2. Install dependencies
 npm install
-# or
-yarn install
-```
 
-3. Set up environment variables
-```bash
-cp .env.example .env.local
-```
+# 3. Add your API key
+# Create a file called .env.local in the project root:
+NEXT_PUBLIC_GEMINI_API_KEY=your_api_key_here
 
-Add your API keys to `.env.local`:
-```env
-NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key
-# Add other required environment variables
-```
-
-4. Run the development server
-```bash
+# 4. Start the development server
 npm run dev
-# or
-yarn dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+Open [http://localhost:3000](http://localhost:3000) in Chrome or Edge.
 
-## 🎯 How It Works
+### Production Build
 
-1. **Start a Session**: Click to begin your style consultation
-2. **Enable Camera**: Allow ClosetAI to see your current outfit
-3. **Chat Naturally**: Ask questions about your style, upcoming events, or fashion advice
-4. **Get Recommendations**: Receive personalized suggestions based on what you're wearing
-5. **Real-time Analysis**: ClosetAI continuously analyzes your appearance for better advice
-
-## 💡 Usage Examples
-
-- "What's the occasion you're dressing for?"
-- "Is it a daytime or nighttime event?"
-- "How does this outfit look for a business meeting?"
-- "Can you suggest accessories for this look?"
-- "What colors would work better with this outfit?"
-
-## 🛠️ Tech Stack
-
-- **Frontend**: Next.js, React, TypeScript
-- **AI Integration**: Google Gemini API
-- **Styling**: Tailwind CSS
-- **Video/Audio**: WebRTC, MediaDevices API
-- **Real-time Communication**: WebSockets
-
-## 📁 Project Structure
-
-```
-gemini-nextjs/
-├── components/          # React components
-├── pages/              # Next.js pages
-├── styles/             # CSS and styling files
-├── utils/              # Utility functions
-├── public/             # Static assets
-├── types/              # TypeScript type definitions
-└── README.md           # Project documentation
+```bash
+npm run build
+npm run start
 ```
 
-## 🔧 Configuration
+## Architecture
 
-### Camera and Microphone Setup
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for a detailed breakdown of the data flow, component design, and key technical decisions.
 
-Ensure your browser has permission to access:
-- Camera (for outfit analysis)
-- Microphone (for voice interaction)
+## AI Persona
 
-### API Configuration
+The AI assistant is named **Drapo** — a stylish, friendly, and supportive outfit buddy. It:
+- Gives genuine, specific compliments on outfits
+- Acknowledges casual/home outfits playfully
+- Asks smart follow-up questions (occasion, indoor/outdoor, daytime/nighttime)
+- Suggests accessories, shoes, and layering options
+- Speaks casually — never robotic
 
-Configure your Gemini API settings in the environment variables for optimal performance.
+## Environment Variables
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-
-
-## 🙋‍♀️ Support
-
-If you have any questions or need support, feel free to:
-- Open an issue in this repository
-- Contact the development team
-- Check out our documentation
-
----
-
-**Ready to look amazing?** Start your style journey with ClosetAI today! 👗✨
+| Variable | Required | Description |
+|---|---|---|
+| `NEXT_PUBLIC_GEMINI_API_KEY` | Yes | Google Gemini API key (exposed to browser intentionally for this demo) |
