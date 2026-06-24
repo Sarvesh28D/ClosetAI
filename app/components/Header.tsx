@@ -18,7 +18,7 @@ export default function Header() {
             
             <div>
               <h1 className="text-xl font-bold font-fredoka bg-gradient-to-r from-primary via-[hsl(var(--outfit-buddy))] to-secondary bg-clip-text text-transparent">
-                OutfitBuddy
+                ClosetAI
               </h1>
               <p className="text-xs text-muted-foreground">Your AI Fashion Assistant</p>
             </div>

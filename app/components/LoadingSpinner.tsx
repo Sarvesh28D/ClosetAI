@@ -27,7 +27,7 @@ export const LoadingSpinner = ({ size = 'md', text }: LoadingSpinnerProps) => {
   );
 };
 
-export const OutfitBuddyLoader = () => {
+export const ClosetAILoader = () => {
   return (
     <div className="flex flex-col items-center justify-center p-8 space-y-6">
       <div className="relative">
@@ -40,7 +40,7 @@ export const OutfitBuddyLoader = () => {
       
       <div className="text-center space-y-2">
         <h3 className="text-lg font-semibold text-primary font-fredoka">
-          OutfitBuddy is getting ready...
+          ClosetAI is getting ready...
         </h3>
         <p className="text-sm text-muted-foreground max-w-xs">
           Setting up your personal fashion assistant

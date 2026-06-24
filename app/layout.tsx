@@ -1,5 +1,5 @@
 // app/layout.tsx
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Fredoka, Inter } from 'next/font/google';
 import './globals.css';
 
@@ -16,11 +16,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'OutfitBuddy - Your Fashion AI Assistant',
+  title: 'ClosetAI - Your Fashion AI Assistant',
   description: 'Get personalized outfit advice through AI-powered video chat',
   keywords: ['fashion', 'AI', 'outfit', 'style', 'assistant'],
-  authors: [{ name: 'OutfitBuddy Team' }],
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+  authors: [{ name: 'ClosetAI Team' }],
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

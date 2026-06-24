@@ -303,7 +303,7 @@ export default function CameraPreview({ onTranscription }: CameraPreviewProps) {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-white font-bold text-lg font-fredoka">
-                    {connectionStatus === 'connecting' ? '✨ Connecting to OutfitBuddy...' : '❌ Connection Lost'}
+                    {connectionStatus === 'connecting' ? '✨ Connecting to ClosetAI...' : '❌ Connection Lost'}
                   </h3>
                   <p className="text-white/80 text-sm max-w-xs mx-auto">
                     {connectionStatus === 'connecting' 
@@ -347,7 +347,7 @@ export default function CameraPreview({ onTranscription }: CameraPreviewProps) {
                   <div className="flex items-center gap-2">
                     <div className={`w-2 h-2 rounded-full ${isModelSpeaking ? 'bg-info animate-pulse' : 'bg-success animate-pulse'}`}></div>
                     <span className="text-xs font-medium">
-                      {isModelSpeaking ? 'OutfitBuddy Speaking' : 'Listening'}
+                      {isModelSpeaking ? 'ClosetAI Speaking' : 'Listening'}
                     </span>
                   </div>
                   <div className="flex-1 h-2 bg-muted/50 rounded-full overflow-hidden">

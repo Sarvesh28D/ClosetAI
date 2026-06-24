@@ -51,7 +51,7 @@ export const GeminiMessage = ({ text, timestamp }: MessageProps) => {
   return (
     <div className={`flex gap-2 items-end mb-3 group ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
       <Avatar className="w-6 h-6 shrink-0">
-        <AvatarImage src="/avatars/gemini.png" alt="OutfitBuddy" />
+        <AvatarImage src="/avatars/gemini.png" alt="ClosetAI" />
         <AvatarFallback className="bg-gradient-to-br from-purple-500 to-pink-500 text-white">
           <Bot className="w-3 h-3" />
         </AvatarFallback>
@@ -59,7 +59,7 @@ export const GeminiMessage = ({ text, timestamp }: MessageProps) => {
       
       <div className="flex flex-col max-w-[85%]">
         <div className="flex items-center gap-1 mb-1">
-          <span className="text-xs font-semibold text-purple-600">OutfitBuddy</span>
+          <span className="text-xs font-semibold text-purple-600">ClosetAI</span>
           {timestamp && (
             <span className="text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
               {timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -92,7 +92,7 @@ export const WelcomeMessage = () => {
   return (
     <div className="flex gap-2 items-end mb-3 animate-slide-in-up">
       <Avatar className="w-6 h-6 shrink-0">
-        <AvatarImage src="/avatars/gemini.png" alt="OutfitBuddy" />
+        <AvatarImage src="/avatars/gemini.png" alt="ClosetAI" />
         <AvatarFallback className="bg-gradient-to-br from-purple-500 to-pink-500 text-white">
           <Bot className="w-3 h-3" />
         </AvatarFallback>
@@ -100,7 +100,7 @@ export const WelcomeMessage = () => {
       
       <div className="flex flex-col max-w-[85%]">
         <div className="flex items-center gap-1 mb-1">
-          <span className="text-xs font-bold text-purple-600">OutfitBuddy</span>
+          <span className="text-xs font-bold text-purple-600">ClosetAI</span>
           <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
         </div>
         
@@ -112,7 +112,7 @@ export const WelcomeMessage = () => {
                 Hey there! 👋✨
               </h3>
               <p className="text-xs leading-relaxed text-gray-700">
-                I'm your personal <strong>OutfitBuddy</strong>! I can see and hear you, so let's chat about your style. Ready to look amazing? 💫
+                I'm your personal <strong>ClosetAI</strong>! I can see and hear you, so let's chat about your style. Ready to look amazing? 💫
               </p>
             </div>
           </div>

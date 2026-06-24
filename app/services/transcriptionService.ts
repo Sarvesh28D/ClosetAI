@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || '');
-const MODEL_NAME = "gemini-1.5-pro";
+const MODEL_NAME = "gemini-2.5-flash";
 
 export class TranscriptionService {
   private model;

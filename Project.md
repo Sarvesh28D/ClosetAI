@@ -1,10 +1,10 @@
-# OutfitBuddy: Your AI Fashion Assistant
+# ClosetAI: Your AI Fashion Assistant
 
 ## Project Description
 
-OutfitBuddy is a virtual fashion consultant that provides real-time styling advice through video chat with Google's Gemini 2.0 AI. This interactive application functions as a fashion-savvy best friend that helps users make confident clothing choices by analyzing their outfits through their camera and providing personalized recommendations. The AI can see users' clothing combinations, hear their styling questions, and respond with both text and voice feedback about colors, fit, accessories, and occasion-appropriateness.
+ClosetAI is a virtual fashion consultant that provides real-time styling advice through video chat with Google's Gemini 2.0 AI. This interactive application functions as a fashion-savvy best friend that helps users make confident clothing choices by analyzing their outfits through their camera and providing personalized recommendations. The AI can see users' clothing combinations, hear their styling questions, and respond with both text and voice feedback about colors, fit, accessories, and occasion-appropriateness.
 
-The application leverages Gemini 2.0's multimodal capabilities to understand visual fashion elements (patterns, colors, styles) while maintaining a natural conversation flow. OutfitBuddy offers honest, constructive feedback on outfit choices and makes specific suggestions based on the event type, time of day, and user's style preferences - just like having a personal stylist at home.
+The application leverages Gemini 2.0's multimodal capabilities to understand visual fashion elements (patterns, colors, styles) while maintaining a natural conversation flow. ClosetAI offers honest, constructive feedback on outfit choices and makes specific suggestions based on the event type, time of day, and user's style preferences - just like having a personal stylist at home.
 
 ## Technologies Used
 
@@ -24,7 +24,7 @@ The application leverages Gemini 2.0's multimodal capabilities to understand vis
 ## Project Aim and Outcome
 
 ### Aim
-The primary goal was to create a virtual fashion consultant that can analyze users' outfits through a camera and provide real-time styling advice. Specifically, OutfitBuddy aimed to:
+The primary goal was to create a virtual fashion consultant that can analyze users' outfits through a camera and provide real-time styling advice. Specifically, ClosetAI aimed to:
 
 1. Implement a fashion-savvy AI assistant that can see and analyze clothing combinations
 2. Process visual fashion elements and user speech in real-time

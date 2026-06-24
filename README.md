@@ -1,8 +1,8 @@
-# OutfitBuddy - Your AI Fashion Assistant
+# ClosetAI - Your AI Fashion Assistant
 
-![OutfitBuddy Interface](screenshot.png)
+![ClosetAI Interface](screenshot.png)
 
-OutfitBuddy is an innovative AI-powered fashion assistant that provides personalized style advice through interactive video chat. Using advanced computer vision and natural language processing, OutfitBuddy can see and analyze your outfits in real-time to offer tailored fashion recommendations.
+ClosetAI is an innovative AI-powered fashion assistant that provides personalized style advice through interactive video chat. Using advanced computer vision and natural language processing, ClosetAI can see and analyze your outfits in real-time to offer tailored fashion recommendations.
 
 ## ✨ Features
 
@@ -59,10 +59,10 @@ yarn dev
 ## 🎯 How It Works
 
 1. **Start a Session**: Click to begin your style consultation
-2. **Enable Camera**: Allow OutfitBuddy to see your current outfit
+2. **Enable Camera**: Allow ClosetAI to see your current outfit
 3. **Chat Naturally**: Ask questions about your style, upcoming events, or fashion advice
 4. **Get Recommendations**: Receive personalized suggestions based on what you're wearing
-5. **Real-time Analysis**: OutfitBuddy continuously analyzes your appearance for better advice
+5. **Real-time Analysis**: ClosetAI continuously analyzes your appearance for better advice
 
 ## 💡 Usage Examples
 
@@ -124,4 +124,4 @@ If you have any questions or need support, feel free to:
 
 ---
 
-**Ready to look amazing?** Start your style journey with OutfitBuddy today! 👗✨
+**Ready to look amazing?** Start your style journey with ClosetAI today! 👗✨
