@@ -8,9 +8,10 @@ import { Base64 } from 'js-base64';
 
 interface CameraPreviewProps {
   onTranscription: (text: string) => void;
+  onUserTranscription: (text: string) => void;
 }
 
-export default function CameraPreview({ onTranscription }: CameraPreviewProps) {
+export default function CameraPreview({ onTranscription, onUserTranscription }: CameraPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const [isStreaming, setIsStreaming] = useState(false);
@@ -24,8 +25,10 @@ export default function CameraPreview({ onTranscription }: CameraPreviewProps) {
   const [isWebSocketReady, setIsWebSocketReady] = useState(false);
   const imageIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const [isModelSpeaking, setIsModelSpeaking] = useState(false);
+  const isModelSpeakingRef = useRef(false);
   const [outputAudioLevel, setOutputAudioLevel] = useState(0);
   const [connectionStatus, setConnectionStatus] = useState<'disconnected' | 'connecting' | 'connected'>('disconnected');
+  const speechRecognitionRef = useRef<any>(null);
 
   const cleanupAudio = useCallback(() => {
     if (audioWorkletNodeRef.current) {
@@ -100,6 +103,66 @@ export default function CameraPreview({ onTranscription }: CameraPreviewProps) {
       }
     }
   };
+
+  // Keep ref in sync so Web Speech API callbacks avoid stale closure
+  useEffect(() => {
+    isModelSpeakingRef.current = isModelSpeaking;
+  }, [isModelSpeaking]);
+
+  // Web Speech API — user transcription, no API quota needed
+  useEffect(() => {
+    if (!isStreaming || !isWebSocketReady) return;
+
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      console.warn("[SpeechRecognition] Not supported in this browser");
+      return;
+    }
+
+    let active = true;
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+
+    recognition.onresult = (event: any) => {
+      if (!active || isModelSpeakingRef.current) return;
+      const transcript = event.results[event.results.length - 1][0].transcript.trim();
+      if (transcript) onUserTranscription(transcript);
+    };
+
+    recognition.onerror = (event: any) => {
+      if (event.error !== 'no-speech' && event.error !== 'aborted') {
+        console.error("[SpeechRecognition] Error:", event.error);
+      }
+    };
+
+    recognition.onend = () => {
+      if (active && !isModelSpeakingRef.current) {
+        try { recognition.start(); } catch (e) { /* already starting */ }
+      }
+    };
+
+    try { recognition.start(); } catch (e) { /* ignore */ }
+    speechRecognitionRef.current = recognition;
+
+    return () => {
+      active = false;
+      try { recognition.stop(); } catch (e) { /* ignore */ }
+      speechRecognitionRef.current = null;
+    };
+  }, [isStreaming, isWebSocketReady, onUserTranscription]);
+
+  // Pause/resume speech recognition when AI is speaking
+  useEffect(() => {
+    const recognition = speechRecognitionRef.current;
+    if (!recognition) return;
+    if (isModelSpeaking) {
+      try { recognition.stop(); } catch (e) { /* ignore */ }
+    } else if (isStreaming && isWebSocketReady) {
+      try { recognition.start(); } catch (e) { /* already running */ }
+    }
+  }, [isModelSpeaking, isStreaming, isWebSocketReady]);
 
   // Initialize WebSocket connection
   useEffect(() => {

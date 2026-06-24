@@ -10,8 +10,16 @@ export default function Home() {
   const [messages, setMessages] = useState<{ type: 'human' | 'gemini', text: string, timestamp: Date }[]>([]);
 
   const handleTranscription = useCallback((transcription: string) => {
-    setMessages(prev => [...prev, { 
-      type: 'gemini', 
+    setMessages(prev => [...prev, {
+      type: 'gemini',
+      text: transcription,
+      timestamp: new Date()
+    }]);
+  }, []);
+
+  const handleUserTranscription = useCallback((transcription: string) => {
+    setMessages(prev => [...prev, {
+      type: 'human',
       text: transcription,
       timestamp: new Date()
     }]);
@@ -23,13 +31,13 @@ export default function Home() {
       <div className="flex-none">
         <Header />
       </div>
-      
+
       {/* Main Content Area - Google Meet Style */}
       <div className="flex-1 flex overflow-hidden flex-col lg:flex-row">
         {/* Video Section - Left Side on desktop, top on mobile */}
         <div className="flex-1 p-2 lg:p-4 bg-slate-900/50">
           <div className="h-full">
-            <CameraPreview onTranscription={handleTranscription} />
+            <CameraPreview onTranscription={handleTranscription} onUserTranscription={handleUserTranscription} />
           </div>
         </div>
 
